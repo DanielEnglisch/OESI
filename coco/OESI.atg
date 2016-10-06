@@ -5,6 +5,17 @@ COMPILER OESI
 
 public Node main = new Node();
 
+public int getErrorCount(){
+	return errors.count;
+}
+
+	public HashMap<Integer,String> getErrorList()
+	{
+		return errors.errorList;
+	}
+	
+
+
 CHARACTERS
   letter    = 'A'..'Z' + 'a'..'z'.
   digit     = '0'..'9'.
@@ -14,7 +25,12 @@ TOKENS
   intCon    = ["-"] digit { digit }.
   realCon  = ["-"] digit {digit} '.' {digit} .
   
+COMMENTS FROM "/*" TO "*/" NESTED
+COMMENTS FROM "//" TO '\n'
+  
 IGNORE "\t\r\n"
+
+
 
 PRODUCTIONS
 
