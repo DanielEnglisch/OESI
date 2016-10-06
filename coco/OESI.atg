@@ -1,7 +1,9 @@
 $package=org.xeroserver.OESI
-
+import org.xeroserver.OESI.Node.Type;
 
 COMPILER OESI
+
+public Node main = new Node();
 
 CHARACTERS
   letter    = 'A'..'Z' + 'a'..'z'.
@@ -16,25 +18,28 @@ IGNORE "\t\r\n"
 
 PRODUCTIONS
 
-OESI										
-=										
+OESI					
+=								
 {
-VARDECL	
-}										
+DEFINE	<out Node def>					(. 	main.append(def); .)
+|ASSIGN <out Node ass> 					(.  main.append(ass); .)
+}
 .
 
-VARDECL
-=														(. Variable<?> v = null; String ident; .)
-("zoi"|"kommazoi")
-ident 													(. ident = t.val; .)
- "="
- (
- intCon													(. v = new Variable<Integer>(ident, Conv.Int(t.val));  .)
- |
- realCon												(. v = new Variable<Double>(ident, Conv.Dou(t.val));  .)
- )														
- ";" 
+DEFINE <out Node def>
+=
+"es" "gibt" ident					(.	def = new Node(t.val);	.)
+";"
 .
+
+ASSIGN	<out Node ass>					(. String name = ""; .)
+=
+ident									(. name = t.val; .)
+ "is"
+ (intCon|realCon)						(. ass = new Node(Type.ASSIGN, new Node(name), new Node(Double.parseDouble(t.val))); .)
+ ";"
+.
+
 
 
 END OESI.
