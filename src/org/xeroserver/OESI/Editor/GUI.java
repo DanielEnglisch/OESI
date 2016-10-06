@@ -1,4 +1,4 @@
-package org.xeroserver.CMM_Editor.GUI;
+package org.xeroserver.OESI.Editor;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
@@ -18,9 +18,6 @@ import javax.swing.JTextArea;
 import javax.swing.JTextPane;
 import javax.swing.border.EmptyBorder;
 import javax.swing.text.BadLocationException;
-
-import org.xeroserver.CMM_Editor.Editor;
-import org.xeroserver.CMM_Editor.SynCol.EditorDoc;
 
 public class GUI extends JFrame {
 

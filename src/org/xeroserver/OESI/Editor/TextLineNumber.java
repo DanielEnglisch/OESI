@@ -1,4 +1,4 @@
-package org.xeroserver.CMM_Editor.GUI;
+package org.xeroserver.OESI.Editor;
 
 import java.awt.Color;
 import java.awt.Dimension;

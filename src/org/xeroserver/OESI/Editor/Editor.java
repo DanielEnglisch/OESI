@@ -1,4 +1,4 @@
-package org.xeroserver.CMM_Editor;
+package org.xeroserver.OESI.Editor;
 
 import java.awt.Color;
 import java.io.BufferedWriter;
@@ -14,7 +14,6 @@ import javax.swing.text.DefaultHighlighter;
 import javax.swing.text.Highlighter;
 import javax.swing.text.Highlighter.HighlightPainter;
 
-import org.xeroserver.CMM_Editor.GUI.GUI;
 import org.xeroserver.OESI.Interpreter;
 import org.xeroserver.OESI.Node;
 import org.xeroserver.OESI.Parser;
@@ -28,12 +27,10 @@ public class Editor {
 	private static File dir = new File(System.getProperty("user.home") + "\\OESI");
 	private static File file = new File(dir, "tmp.oesi");
 
-
 	// --------
 
 	private static boolean hasErrors = false;
 	private static Node mainNode = null;
-
 
 	public static String version = "0.1";
 
@@ -48,7 +45,6 @@ public class Editor {
 
 	}
 
-	
 	public static void setSave(File f) {
 		file = f;
 	}
@@ -57,8 +53,6 @@ public class Editor {
 
 		// Creats folder in home folder:
 		dir.mkdirs();
-
-		
 
 		gui = new GUI();
 
@@ -149,8 +143,6 @@ public class Editor {
 				gui.getConsoleArea().setText("No errors found!");
 				hasErrors = false;
 			}
-
-			
 
 		}
 

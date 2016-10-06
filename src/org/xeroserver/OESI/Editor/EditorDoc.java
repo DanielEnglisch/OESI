@@ -1,4 +1,4 @@
-package org.xeroserver.CMM_Editor.SynCol;
+package org.xeroserver.OESI.Editor;
 
 import java.awt.Color;
 
