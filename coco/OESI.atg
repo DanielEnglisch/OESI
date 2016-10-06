@@ -1,0 +1,40 @@
+$package=org.xeroserver.OESI
+
+
+COMPILER OESI
+
+CHARACTERS
+  letter    = 'A'..'Z' + 'a'..'z'.
+  digit     = '0'..'9'.
+
+TOKENS
+  ident     = letter { letter | digit }.
+  intCon    = ["-"] digit { digit }.
+  realCon  = ["-"] digit {digit} '.' {digit} .
+  
+IGNORE "\t\r\n"
+
+PRODUCTIONS
+
+OESI										
+=										
+{
+VARDECL	
+}										
+.
+
+VARDECL
+=														(. Variable<?> v = null; String ident; .)
+("zoi"|"kommazoi")
+ident 													(. ident = t.val; .)
+ "="
+ (
+ intCon													(. v = new Variable<Integer>(ident, Conv.Int(t.val));  .)
+ |
+ realCon												(. v = new Variable<Double>(ident, Conv.Dou(t.val));  .)
+ )														
+ ";" 
+.
+
+
+END OESI.
