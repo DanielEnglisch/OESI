@@ -87,6 +87,8 @@ tmp/
 # TeXlipse plugin
 .texlipse
 
+coco/Parser.java
+coco/Scanner.java
 
 # IntelliJ-Stuff =============================
 .idea/
