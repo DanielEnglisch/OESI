@@ -126,16 +126,20 @@ public int getErrorCount(){
 
 	Node  ASSIGN() {
 		Node  ass;
-		String name = ""; 
+		String name = ""; ass = null; 
 		Expect(1);
 		name = t.val; 
 		Expect(7);
 		if (la.kind == 2) {
 			Get();
+			ass = new Node(Type.ASSIGN, new Node(name), new Node(Double.parseDouble(t.val))); 
 		} else if (la.kind == 3) {
 			Get();
+			ass = new Node(Type.ASSIGN, new Node(name), new Node(Double.parseDouble(t.val))); 
+		} else if (la.kind == 1) {
+			Get();
+			ass = new Node(Type.ASSIGN, new Node(name), new Node(t.val)); 
 		} else SynErr(9);
-		ass = new Node(Type.ASSIGN, new Node(name), new Node(Double.parseDouble(t.val))); 
 		Expect(6);
 		return ass;
 	}

@@ -48,18 +48,23 @@ DEFINE	<out Node def>					(. 	main.append(def); .)
 
 DEFINE <out Node def>
 =
-"es" "gibt" ident					(.	def = new Node(t.val);	.)
+"es" "gibt" ident						(.	def = new Node(t.val);	.)
 ";"
 .
 
-ASSIGN	<out Node ass>					(. String name = ""; .)
+ASSIGN	<out Node ass>					(. String name = ""; ass = null; .)
 =
 ident									(. name = t.val; .)
  "is"
- (intCon|realCon)						(. ass = new Node(Type.ASSIGN, new Node(name), new Node(Double.parseDouble(t.val))); .)
+ (
+ intCon							(. ass = new Node(Type.ASSIGN, new Node(name), new Node(Double.parseDouble(t.val))); .)
+ |
+ realCon						(. ass = new Node(Type.ASSIGN, new Node(name), new Node(Double.parseDouble(t.val))); .)
+ |
+ ident							(. ass = new Node(Type.ASSIGN, new Node(name), new Node(t.val)); .)
+ )								
  ";"
 .
-
 
 
 END OESI.

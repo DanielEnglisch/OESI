@@ -20,11 +20,29 @@ public class Interpreter {
 			if (curr.type == Type.DEFINE) {
 				variables.add(new Variable(curr.ident));
 			} else if (curr.type == Type.ASSIGN) {
-				Variable v = getVar(curr.left.ident);
-				if (v == null)
-					System.err.println("Undifined variable " + curr.left.ident);
-				else
-					v.value = curr.right.value;
+
+				if (curr.right.type == Type.DEFINE) {
+
+					Variable l = getVar(curr.left.ident);
+					Variable r = getVar(curr.right.ident);
+
+					if (l == null) {
+						System.err.println("Undifined variable " + curr.left.ident);
+					} else if (r == null) {
+						System.err.println("Undifined variable " + curr.right.ident);
+					} else {
+						l.value = r.value;
+					}
+
+				} else {
+					Variable v = getVar(curr.left.ident);
+
+					if (v == null)
+						System.err.println("Undifined variable " + curr.left.ident);
+					else
+						v.value = curr.right.value;
+				}
+
 			}
 
 			curr = curr.next;
