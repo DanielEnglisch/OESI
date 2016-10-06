@@ -1,3 +1,7 @@
+/**
+ * @author Daniel Englisch
+ */
+
 package org.xeroserver.OESI;
 
 public class Node {

@@ -1,3 +1,9 @@
+/**
+ * @author Daniel Englisch
+ */
+
+
+
 package org.xeroserver.OESI.Editor;
 
 import java.awt.BorderLayout;

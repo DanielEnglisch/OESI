@@ -1,3 +1,8 @@
+/**
+ * Modified by Daniel Englisch
+ */
+
+
 package org.xeroserver.OESI.Editor;
 
 import java.awt.Color;

@@ -1,3 +1,7 @@
+/**
+ * Grammar by Daniel Englisch to generate Parser.java and Scanner.java
+ */
+
 $package=org.xeroserver.OESI
 import org.xeroserver.OESI.Node.Type;
 
