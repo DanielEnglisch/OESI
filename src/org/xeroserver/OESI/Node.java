@@ -7,7 +7,7 @@ package org.xeroserver.OESI;
 public class Node {
 
 	public enum Type {
-		ASSIGN, LITERAL, DEFINE, MAIN
+		ASSIGN, LITERAL, DEFINE, MAIN, TERM, FACTOR, PLUS, MINUS, MUL, DIV
 	}
 
 	public Node left, right, next;

@@ -2,7 +2,6 @@
  * @author Daniel Englisch
  */
 
-
 package org.xeroserver.OESI.Editor;
 
 import java.awt.Color;
@@ -37,7 +36,7 @@ public class Editor {
 	private static boolean hasErrors = false;
 	private static Node mainNode = null;
 
-	public static String version = "0.1";
+	public static String version = "0.2";
 
 	private static int ms_parseDely = 500;
 

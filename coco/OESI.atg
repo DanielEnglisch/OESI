@@ -9,15 +9,15 @@ COMPILER OESI
 
 public Node main = new Node();
 
+//Editor Stuff
 public int getErrorCount(){
 	return errors.count;
 }
 
-	public HashMap<Integer,String> getErrorList()
-	{
-		return errors.errorList;
-	}
-	
+public HashMap<Integer,String> getErrorList(){
+	return errors.errorList;
+}
+//--End Editor
 
 
 CHARACTERS
@@ -33,8 +33,6 @@ COMMENTS FROM "/*" TO "*/" NESTED
 COMMENTS FROM "//" TO '\n'
   
 IGNORE "\t\r\n"
-
-
 
 PRODUCTIONS
 
@@ -56,15 +54,53 @@ ASSIGN	<out Node ass>					(. String name = ""; ass = null; .)
 =
 ident									(. name = t.val; .)
  "is"
- (
- intCon							(. ass = new Node(Type.ASSIGN, new Node(name), new Node(Double.parseDouble(t.val))); .)
- |
- realCon						(. ass = new Node(Type.ASSIGN, new Node(name), new Node(Double.parseDouble(t.val))); .)
- |
- ident							(. ass = new Node(Type.ASSIGN, new Node(name), new Node(t.val)); .)
- )								
+ EXPRESSION <out Node exp>				(. ass = new Node(Type.ASSIGN, new Node(name), exp); .)
+ 
  ";"
 .
 
+
+EXPRESSION <out Node exp>
+=
+TERM <out Node trm1>			(. exp = trm1; .)
+{
+ADDOP <out Type operator>
+TERM <out Node trm2>			(. exp = new Node(operator, trm1, trm2); trm1 = exp; .)
+}
+.
+
+
+
+TERM <out Node trm>
+=
+FACTOR <out Node fac1>			(. trm = fac1; .)
+{
+MULOP <out Type operator>		
+FACTOR <out Node fac2>			(. trm = new Node(operator, fac1, fac2); fac1 = trm; .)
+}
+.
+
+FACTOR <out Node fac>			(. fac = null; .)
+=
+intCon							(. fac = new Node(Double.parseDouble(t.val)); .)
+|
+realCon							(. fac = new Node(Double.parseDouble(t.val)); .)
+|
+ident							(. fac = new Node(t.val); .)
+.
+
+ADDOP <out Type operator> 		(. operator = null; .)
+=
+"blus"							(. operator = Type.PLUS; .)
+|
+"minus"								(. operator = Type.MINUS; .)
+.
+
+MULOP <out Type operator> 		(. operator = null; .)
+=
+"moi"								(. operator = Type.MUL; .)
+|
+"duach"								(. operator = Type.DIV; .)
+.
 
 END OESI.

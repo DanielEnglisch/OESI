@@ -2,7 +2,6 @@
  * Modified by Daniel Englisch
  */
 
-
 package org.xeroserver.OESI.Editor;
 
 import java.awt.Color;
@@ -19,10 +18,10 @@ public class EditorDoc extends DefaultStyledDocument {
 
 	final StyleContext cont = StyleContext.getDefaultStyleContext();
 
-	private String match_r = "(\\W)*(es gibt|double|bool|float|string|char|void|return|break|const|while|for|if|else|true|false)";
+	private String match_r = "(\\W)*(es|gibt|is|blus|minus|moi|duach)";
 	final AttributeSet attr = cont.addAttribute(cont.getEmptySet(), StyleConstants.Foreground, new Color(255, 0, 255));
 
-	private String match_y = "(\\W)*(read|readln|print|println|length)";
+	private String match_y = "(\\W)*(methods)";
 	final AttributeSet atty = cont.addAttribute(cont.getEmptySet(), StyleConstants.Foreground, Color.ORANGE);
 
 	private String match_kurblue = "(\\W)*(\\d+|\\.((\\d)*)|\\d+(f)|\\]|\\[.)";
