@@ -41,6 +41,7 @@ OESI
 {
 DEFINE	<out Node def>					(. 	main.append(def); .)
 |ASSIGN <out Node ass> 					(.  main.append(ass); .)
+|"if" CONDITION
 }
 .
 
@@ -69,8 +70,6 @@ TERM <out Node trm2>			(. exp = new Node(operator, trm1, trm2); trm1 = exp; .)
 }
 .
 
-
-
 TERM <out Node trm>
 =
 FACTOR <out Node fac1>			(. trm = fac1; .)
@@ -87,6 +86,61 @@ intCon							(. fac = new Node(Double.parseDouble(t.val)); .)
 realCon							(. fac = new Node(Double.parseDouble(t.val)); .)
 |
 ident							(. fac = new Node(t.val); .)
+.
+
+CONDITION
+=
+CONTERM
+{
+"||"
+CONTERM
+}
+.
+
+CONTERM
+=
+CONFAC
+{
+"&&"
+CONFAC
+}
+.
+
+CONFAC
+=
+(
+EXPRESSION <out Node exp1>
+RELOP
+EXPRESSION <out Node exp2>
+)
+|
+(
+"!"
+"("
+CONDITION
+")"
+)
+|
+(
+"("
+CONDITION
+")"
+)
+.
+
+RELOP
+=
+"=="
+|
+"!="
+|
+">"
+|
+"<"
+|
+">="
+|
+"<="
 .
 
 ADDOP <out Type operator> 		(. operator = null; .)
