@@ -7,7 +7,7 @@ package org.xeroserver.OESI;
 public class Node {
 
 	public enum Type {
-		ASSIGN, LITERAL, DEFINE, MAIN, TERM, FACTOR, PLUS, MINUS, MUL, DIV
+		ASSIGN, LITERAL, DEFINE, MAIN, TERM, FACTOR, PLUS, MINUS, MUL, DIV, LESS, GREATER, EQUAL, NOTEQUAL, LESSTHAN, GREATERTHAN
 	}
 
 	public Node left, right, next;
@@ -61,11 +61,11 @@ public class Node {
 		System.out.print("\n");
 
 		if (left != null) {
-			System.out.print("\t");
+			System.out.print("\t l-");
 			left.dump();
 		}
 		if (right != null) {
-			System.out.print("\t");
+			System.out.print("\t r-");
 			right.dump();
 		}
 		if (next != null) {

@@ -110,7 +110,7 @@ CONFAC
 =
 (
 EXPRESSION <out Node exp1>
-RELOP
+RELOP <out Type operator>
 EXPRESSION <out Node exp2>
 )
 |
@@ -128,26 +128,26 @@ CONDITION
 )
 .
 
-RELOP
+RELOP <out Type operator>	(.	operator = null; .)
 =
-"=="
+"=="						(. operator = Type.EQUAL; .)
 |
-"!="
+"!="						(. operator = Type.NOTEQUAL; .)
 |
-">"
+">"							(. operator = Type.GREATER; .)
 |
-"<"
+"<"							(. operator = Type.LESS; .)
 |
-">="
+">="						(. operator = Type.GREATERTHAN; .)
 |
-"<="
+"<="						(. operator = Type.LESSTHAN; .)
 .
 
 ADDOP <out Type operator> 		(. operator = null; .)
 =
 "blus"							(. operator = Type.PLUS; .)
 |
-"minus"								(. operator = Type.MINUS; .)
+"minus"							(. operator = Type.MINUS; .)
 .
 
 MULOP <out Type operator> 		(. operator = null; .)

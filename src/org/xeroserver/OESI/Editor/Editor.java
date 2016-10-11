@@ -34,7 +34,7 @@ public class Editor {
 	// --------
 
 	private static boolean hasErrors = false;
-	private static Node mainNode = null;
+	public static Node mainNode = null;
 
 	public static String version = "0.2";
 
@@ -60,7 +60,7 @@ public class Editor {
 
 		gui = new GUI();
 
-		gui.getEditorArea().setText("");
+		gui.getEditorArea().setText("es gibt x;\nes gibt y;\n\nx is 2 moi 12 minus 7;\ny is x moi x minus 29;");
 
 		new Timer().scheduleAtFixedRate(new TimerTask() {
 

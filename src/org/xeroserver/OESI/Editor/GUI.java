@@ -101,6 +101,9 @@ public class GUI extends JFrame {
 				if (e.isControlDown()) {
 					if (e.getKeyCode() == KeyEvent.VK_R) {
 						Editor.run();
+					} else if (e.getKeyCode() == KeyEvent.VK_T) {
+						System.out.println("==== SyntaxTree ====");
+						Editor.mainNode.dump();
 					}
 
 				}
